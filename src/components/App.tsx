@@ -1,5 +1,6 @@
 import * as React from 'react'
 import Inputadress from './Inputadress'
+import Map from './Map'
 
 interface AppProps {
 }
@@ -15,6 +16,7 @@ export default class App extends React.Component<AppState, AppProps> {
   render () {
     return <div>
       <Inputadress />
+      <Map />
     </div>
   }
 }
