@@ -1,0 +1,22 @@
+.form-adress {
+  display: flex;
+  justify-content: center;
+}
+
+.form-button-item {
+  margin-left: 3rem !important;
+  background-color: #28A77A !important;
+}
+
+.map {
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+@media screen and (min-width: 1024px){
+    .map {
+        height: 500px;
+    }
+}

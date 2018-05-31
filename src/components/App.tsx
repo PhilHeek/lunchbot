@@ -16,7 +16,9 @@ export default class App extends React.Component<AppState, AppProps> {
   render () {
     return <div>
       <Inputadress />
-      <Map />
+      <div className='map'>
+        <Map />
+      </div>
     </div>
   }
 }

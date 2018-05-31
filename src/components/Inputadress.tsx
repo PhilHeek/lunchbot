@@ -16,14 +16,16 @@ export default class Inputadress extends React.Component<State, Props> {
   }
 
   render () {
-    return  <div>
+    return  <div className='form-adress'>
       <TextField
         label="Adress"
         id="margin-none"
         defaultValue=""
         helperText="Please fill out your current position"
-      />   
-      <Button variant="raised" color="primary">
+      />
+      <Button
+        variant="raised"
+        className="form-button-item">
         Submit
       </Button>
     </div>
