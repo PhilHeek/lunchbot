@@ -1,5 +1,17 @@
 .form-adress {
-  display: flex;
+  justify-content: space-between;
+}
+
+.form {
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -150px;
+  margin-top: -150px;
+  align-items: center;
+  vertical-align: middle;
   justify-content: center;
 }
 
