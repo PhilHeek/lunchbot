@@ -1,9 +1,8 @@
-import React from 'react'
-import Footer from './molecules/Footer'
+import React from 'react';
 import styled from 'styled-components';
 
-import AddEstablishment from '../containers/AddEstablishment'
-import VisibleEstablishmentList from '../containers/VisibleEstablishmentList'
+import AddressForm from './molecules/AddressForm';
+import Map from './molecules/Map';
 
 
 const StyledApp = styled.div`
@@ -38,9 +37,8 @@ const App = () => (
   <StyledApp>
   	<Wrapper>
   		<AppTitle>Enter your adress and find a restaurant</AppTitle>
-	    <AddEstablishment />
-	    <VisibleEstablishmentList />
-	    <Footer />
+	    <AddressForm />
+	    <Map />
     </Wrapper>
   </StyledApp>
 )
