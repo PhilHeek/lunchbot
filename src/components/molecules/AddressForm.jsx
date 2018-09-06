@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Form, Field } from 'react-final-form';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import { updateMap } from '../../actions/location';
+import locationAction from '../../actions/location';
+import establishmentAction from '../../actions/establishment';
 
 const googleMapsClient = require('@google/maps').createClient({
   key: 'AIzaSyCtk3M3KPaw9DOCaSBnFPlJg97rkKbEXCw',
@@ -56,7 +57,30 @@ class AddressForm extends Component {
       let lat = response.json.results[0].geometry.location.lat;
       let lng = response.json.results[0].geometry.location.lng;
 
+      // console.log('Response from googleMapsClient: ', response.json.results[0]);
       this.props.onSubmitLocation({ address, lat, lng });
+      fetch('http://localhost:3000/establishments/' + lat + '&' + lng)
+      .then(response => response.json())
+      .then(data => {
+        data.forEach(est => {
+          let estAddress = est.location.address1;
+          let estName = est.name;
+          let estIsClose = est.is_closed;
+          let estLatitude = est.coordinates.latitude;
+          let estLongitude = est.coordinates.longitude;
+
+          console.log('addresse: ', estAddress);
+          console.log('name: ', estName);
+          console.log('latitude: ', estLatitude);
+          console.log('longitude: ', estLongitude);
+          this.props.onReceiveEstablishment({ estAddress, estName, estIsClose, estLatitude, estLongitude });
+        });
+
+
+
+      })
+      .catch(err => console.log(err));
+
    })
    .catch((err) => {
      console.log(err);
@@ -85,7 +109,8 @@ class AddressForm extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  onSubmitLocation: location => dispatch(updateMap(location))
+  onSubmitLocation: location => dispatch(locationAction.updateMap(location)),
+  onReceiveEstablishment: estLocation => dispatch(establishmentAction.AddEstablishment(estLocation))
 });
 
 const Address = connect(null, mapDispatchToProps)(AddressForm);

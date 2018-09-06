@@ -5,7 +5,21 @@ import { connect } from 'react-redux';
 import Marker from '../atoms/Marker';
 
 class Map extends Component {
-  render() {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      establishment: []
+    };
+ }
+
+ render() {
+   this.props.establishment.map((est, key) => {
+     console.log('key: ', key);
+     console.log('est.name:', est.name);
+     console.log('est.lat:', est.lat);
+     console.log('est.lng:', est.lng);
+   })
     return (
       // Important! Always set the container height explicitly
       <div style={{ height: '65vh', width: '100%' }}>
@@ -17,8 +31,17 @@ class Map extends Component {
           <Marker
             lat={48.862334}
             lng={2.350453}
-            text={'TUTUTUTUTTU'}
+            text={'MARSEILLE'}
           />
+        <ul>
+          {this.props.establishment.map((est, key) => <li key={key}>
+            <Marker
+              lat={est.lat}
+              lng={est.lng}
+              text={est.name}
+            />
+          </li>)}
+        </ul>
         </GoogleMapReact>
       </div>
     );
@@ -30,7 +53,8 @@ Map.defaultProps = {
 };
 
 const mapStateToProps = state => ({
-  center: state.location
+  center: state.location,
+  establishment: state.establishment
 });
 
 const MapUpdated = connect(mapStateToProps, null)(Map);

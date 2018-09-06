@@ -13,8 +13,12 @@ const StyledApp = styled.div`
 	width: 100vw;
 	height: 100vh;
 	color: #455A64;
-	background-color: #495d77;
+	background-color: #D3D3D3;
 	font-size: 10px;
+`;
+
+const StyledMap = styled.div`
+	box-shadow: 10px 10px 5px #86888A;
 `;
 
 const AppTitle = styled.h1`
@@ -38,7 +42,9 @@ const App = () => (
   	<Wrapper>
   		<AppTitle>Enter your adress and find a restaurant</AppTitle>
 	    <AddressForm />
-	    <Map />
+			<StyledMap>
+	    	<Map />
+			</StyledMap>
     </Wrapper>
   </StyledApp>
 )

@@ -1,4 +1,5 @@
 import { handleActions } from 'redux-actions';
+import ActionTypes from '../actions/actionTypes';
 
 const initialState = {
     address: undefined,
@@ -8,9 +9,9 @@ const initialState = {
 };
 
 
-export const location = handleActions(
+export default handleActions(
   {
-    UPDATE_LOCATION: (state, { payload }) => ({
+    [ActionTypes.UPDATE_LOCATION]: (state, { payload }) => ({
       address: payload.address,
       lat: payload.lat,
       lng: payload.lng
