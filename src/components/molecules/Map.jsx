@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import Marker from '../atoms/Marker';
 
 class Map extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
 
     this.state = {
@@ -13,12 +13,24 @@ class Map extends Component {
     };
  }
 
- render() {
+ displaymarkers (props) {
+   const establishments = this.props.establishment;
+   console.log('establishments: ', establishments);
+   const listEst = establishments.map((est, key) => <li key={key}> <Marker
+     lat={est.lat}
+     lng={est.lng}
+     text={est.name}
+   /> </li>);
+   return (<ul>{listEst}</ul>);
+ }
+
+ render () {
+   console.log(this.props.establishment);
    this.props.establishment.map((est, key) => {
-     console.log('key: ', key);
-     console.log('est.name:', est.name);
-     console.log('est.lat:', est.lat);
-     console.log('est.lng:', est.lng);
+    //  console.log('key: ', key);
+    //  console.log('est.name:', est.name);
+    //  console.log('est.lat:', est.lat);
+    //  console.log('est.lng:', est.lng);
    })
     return (
       // Important! Always set the container height explicitly
@@ -33,15 +45,7 @@ class Map extends Component {
             lng={2.350453}
             text={'MARSEILLE'}
           />
-        <ul>
-          {this.props.establishment.map((est, key) => <li key={key}>
-            <Marker
-              lat={est.lat}
-              lng={est.lng}
-              text={est.name}
-            />
-          </li>)}
-        </ul>
+          <displaymarkers establishment={this.props.establishment} />
         </GoogleMapReact>
       </div>
     );

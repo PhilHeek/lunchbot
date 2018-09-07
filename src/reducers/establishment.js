@@ -8,6 +8,7 @@ export default handleActions({
                   isClose: action.payload.estIsClose,
                   lat: action.payload.estLatitude,
                   lng: action.payload.estLongitude }];
-    }
+    },
 
+    [ActionTypes.CLEAR_ESTABLISHMENT]: (state) => []
   }, []);

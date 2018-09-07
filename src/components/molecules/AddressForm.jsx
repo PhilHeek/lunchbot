@@ -59,6 +59,7 @@ class AddressForm extends Component {
 
       // console.log('Response from googleMapsClient: ', response.json.results[0]);
       this.props.onSubmitLocation({ address, lat, lng });
+      this.props.clearEstablishment();
       fetch('http://localhost:3000/establishments/' + lat + '&' + lng)
       .then(response => response.json())
       .then(data => {
@@ -68,11 +69,6 @@ class AddressForm extends Component {
           let estIsClose = est.is_closed;
           let estLatitude = est.coordinates.latitude;
           let estLongitude = est.coordinates.longitude;
-
-          console.log('addresse: ', estAddress);
-          console.log('name: ', estName);
-          console.log('latitude: ', estLatitude);
-          console.log('longitude: ', estLongitude);
           this.props.onReceiveEstablishment({ estAddress, estName, estIsClose, estLatitude, estLongitude });
         });
 
@@ -110,6 +106,7 @@ class AddressForm extends Component {
 
 const mapDispatchToProps = dispatch => ({
   onSubmitLocation: location => dispatch(locationAction.updateMap(location)),
+  clearEstablishment: estLocation => dispatch(establishmentAction.clearEstablishment()),
   onReceiveEstablishment: estLocation => dispatch(establishmentAction.AddEstablishment(estLocation))
 });
 
