@@ -24,15 +24,15 @@ const StyledMarker = styled.div`
 
 class Marker extends Component {
 
-constructor(props) {
+constructor (props) {
   super(props);
 }
 
   render () {
     return (
-        <StyledMarker>
+        <div>
           {this.props.text}
-        </StyledMarker>
+        </div>
     );
   }
 }

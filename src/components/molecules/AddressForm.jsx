@@ -69,6 +69,7 @@ class AddressForm extends Component {
           let estIsClose = est.is_closed;
           let estLatitude = est.coordinates.latitude;
           let estLongitude = est.coordinates.longitude;
+
           this.props.onReceiveEstablishment({ estAddress, estName, estIsClose, estLatitude, estLongitude });
         });
 
