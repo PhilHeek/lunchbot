@@ -15,17 +15,14 @@ class Map extends Component {
 
  render () {
    console.log(this.props.establishment);
-   this.props.establishment.map((est, key) => {
-     console.log('Single establishment = ', est);
-  });
 
-   const Markers = this.props.establishment.map((est, index) => {
+   const Markers = this.props.establishment.map((est, index) => (
        <Marker
          lat={est.lat}
          lng={est.lng}
          text={est.name}
-       />;
-   });
+       />
+   ));
 
    console.log('Markers: ', Markers);
 
@@ -37,11 +34,11 @@ class Map extends Component {
           center={this.props.center}
           defaultZoom={this.props.zoom}
         >
-          <Marker
+          {/* <Marker
             lat={this.props.center.latitude}
             lng={this.props.center.longitude}
             text={'TITI'}
-          />
+          /> */}
           {Markers}
         </GoogleMapReact>
       </div>

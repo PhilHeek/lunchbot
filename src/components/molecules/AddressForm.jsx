@@ -31,9 +31,9 @@ const StyledInput = styled.input`
   width: 100%;
   height: 1rem;
   font-family: inherit;
-  font-size: 2.1rem;
+  font-size: 1rem;
   font-weight: inherit;
-  line-height: 1.8;
+  line-height: 3.8;
   border: none;
   border-radius: 0.4rem;
 
