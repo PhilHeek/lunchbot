@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import AddressForm from './molecules/AddressForm';
 import Map from './molecules/Map';
+import Detail from './molecules/EstablishmentDetail';
 
 
 const StyledApp = styled.div`
@@ -13,12 +14,12 @@ const StyledApp = styled.div`
 	width: 100vw;
 	height: 100vh;
 	color: #455A64;
-	background-color: #D3D3D3;
+	background-color: ${({theme}) => theme.palette_red.background}
 	font-size: 10px;
 `;
 
 const StyledMap = styled.div`
-	box-shadow: 10px 10px 5px #86888A;
+	box-shadow: 10px 10px 5px ${({theme}) => theme.palette_red.secondary}
 `;
 
 const AppTitle = styled.h1`
@@ -40,11 +41,12 @@ const Wrapper = styled.div`
 const App = () => (
   <StyledApp>
   	<Wrapper>
-  		<AppTitle>Enter your adress and find a restaurant</AppTitle>
+  		<AppTitle>Food Spy</AppTitle>
 	    <AddressForm />
 			<StyledMap>
 	    	<Map />
 			</StyledMap>
+			<Detail />
     </Wrapper>
   </StyledApp>
 )

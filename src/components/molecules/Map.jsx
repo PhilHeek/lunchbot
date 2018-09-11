@@ -14,17 +14,14 @@ class Map extends Component {
  }
 
  render () {
-   console.log(this.props.establishment);
-
    const Markers = this.props.establishment.map((est, index) => (
        <Marker
+         key={index}
          lat={est.lat}
          lng={est.lng}
          text={est.name}
        />
-   ));
-
-   console.log('Markers: ', Markers);
+  ));
 
     return (
       // Important! Always set the container height explicitly
@@ -34,11 +31,12 @@ class Map extends Component {
           center={this.props.center}
           defaultZoom={this.props.zoom}
         >
-          {/* <Marker
+          <Marker
             lat={this.props.center.latitude}
             lng={this.props.center.longitude}
-            text={'TITI'}
-          /> */}
+            location
+            text={'TOTO'}>
+          </Marker>
           {Markers}
         </GoogleMapReact>
       </div>

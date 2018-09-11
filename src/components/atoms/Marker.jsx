@@ -1,38 +1,38 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import RestaurantMenu from '@material-ui/icons/RestaurantMenu';
+import Place from '@material-ui/icons/Place';
 
 const StyledMarker = styled.div`
-  width: 30px
-  height: 30px
-  border-radius: 50% 50% 50% 0
-  background: #89849b
+  width: 20px
+  height: 20px
+  border-radius: 50% 50% 50% 50%
+  background: #d22b22
+  border-style: solid
+  border-width: 5px
+  border-color: #4eba4e
   position: absolute
-  transform: rotate(-45deg)
   left: 50%
   top: 50%
   margin: -20px 0 0 -20px
-  &:after
-    content ''
-    width 14px
-    height 14px
-    margin 8px 0 0 8px
-    background #2F2F2F
-    position absolute
-    border-radius 50%
 `;
 
 class Marker extends Component {
 
 constructor (props) {
   super(props);
+  console.log('Marker location:', this.props.location);
 }
 
   render () {
+
+    const Icon = this.props.location ? <Place /> : <RestaurantMenu />;
+
     return (
-        <div>
-          {this.props.text}
-        </div>
+      <div>
+          {Icon}
+      </div>
     );
   }
 }
